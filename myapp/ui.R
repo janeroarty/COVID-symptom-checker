@@ -22,11 +22,11 @@ body <- dashboardBody(tabItems(
   
   tabItem(tabName = "welcome",
           tags$h2("Welcome to a Naive Bayesian Model for COVID-19"),
-          tags$p("Welcome to a Naive Bayesian Model for COVID-19. In this SHINY app, there are two main features. In the symptoms tab you can check the box of which symptoms you are experiencing. The results tab will then tell you the probability that you have COVID-19, the probability that you have the flu, and the probability that you have neither. In the 'Probabilities' tabs you can adjust the probabilities for each symptom. We made assumptions about default probabilities using data from the following sources:"),
+          tags$p("Welcome to a Naive Bayesian Model for COVID-19. In this SHINY app, there are three main features. In the 'Symptoms' tab, you can check the box of which symptoms you are experiencing. The 'Results' tab will then tell you the probability that you have COVID-19, the probability that you have the flu, and the probability that you have neither. In the 'Symptom Probabilities' tab, you can adjust the probability for each symptom. In the 'Disease Prevalence' tab, you can adjust the infection rate for COVID-19 and the flu. We assigned default numbers for both the 'Symptom Probabilities' and 'Disease Prevalence' tabs by making assumptions about data from the following sources: "),
           tags$p(tags$a(href="https://www.cdc.gov/flu/symptoms/coldflu.htm", "CDC")),
           tags$p(tags$a(href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf", "WHO")),
           
-          tags$p("Since this is a Naive Bayes model we needed to make some assumptions. Our model assumes independence among each symptom and it assumes independence between the flu, COVID-19 and neither. We also limited the number of symptom in our model. We choose 10 symptoms because they are the most common and we were able to find the most information about these symptoms in order to assign default probabilites. Finally, although we did have reaserch for each symptom we made some assumptions about the probabilities for each symptom. We hoped to remedy that to some extent by allowing users to change the probabilities for each symptom in the 'Symptom Probabilities' tab."), 
+          tags$p("Since this is a Naive Bayes model we needed to make some assumptions. Our model assumes independence among each symptom and it assumes independence between the flu, COVID-19, and neither. We also limited the number of symptoms in our model. We choose 10 symptoms because they are the most common and we were able to find the most information about these symptoms in order to assign default probabilities Finally, although we did have research for each symptom we made some assumptions about the probabilities for each symptom. We hoped to remedy that to some extent by allowing users to change the probabilities for each symptom in the 'Symptom Probabilities' tab."), 
           
           tags$div(
             tags$b("Theory"),
@@ -49,7 +49,7 @@ body <- dashboardBody(tabItems(
   #First tab content
   tabItem(tabName = "symptoms",
           fluidRow(
-            box(title = "Instructions:", "Check all of your symptoms. Once finished, either adjust the probabilites in the following two tabs (though they have already been set to approximate values) or proceed to the results tab for the probabilites of each disease.", width = 12)),
+            box(title = "Instructions:", "Check all of your symptoms. Once finished, either adjust the probabilities in the following two tabs (though they have already been set to approximate values) or proceed to the results tab for the probabilities of each disease.", width = 12)),
           fluidRow(
             box(
               checkboxInput(inputId = "isFever", 
@@ -113,7 +113,7 @@ body <- dashboardBody(tabItems(
   # Second tab content
   tabItem(tabName = "covidprobs",
           fluidRow(
-            box(title = "Instructions:", "Here, you can adjust the probabilites of each symptom given each disease. We set the initial values based on preliminary research, but these values can change as research develops.", width = 12
+            box(title = "Instructions:", "Here, you can adjust the probability of each symptom given each disease. We set the initial values based on preliminary research, but these values can change as research develops.", width = 12
             )),
           fluidRow(
             box(title = "COVID-19 Probabilities",
@@ -188,7 +188,7 @@ body <- dashboardBody(tabItems(
               box(h3("You most likely have:", textOutput("most_likely", container = span))),
               box(plotOutput("plot1", width = "100%"))
             ),
-            box(title = "WARNING:", "The results from this app should not be used for diagnosis. We used Naive Bayesian Statistics for our model so many assumptions were made in the creation of this app. If you think that you have COVID-19, you should get tested immediately and stay quarantined until you are recovered.", width = 12)
+            box(title = "WARNING:", "The results of this app should not be used for diagnosis. We used Naive Bayesian Statistics for our model so many assumptions were made in the creation of this app. If you think that you have COVID-19, you should get tested immediately and stay quarantined until you are recovered.", width = 12)
           )
   )
   

@@ -1,0 +1,12 @@
+name: symptom_checker
+title: symptom_checker
+username:
+account: jane-roarty
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2260881
+bundleId: 3116956
+url: https://jane-roarty.shinyapps.io/symptom_checker/
+when: 1588869176.37225
+asMultiple: FALSE
+asStatic: FALSE
